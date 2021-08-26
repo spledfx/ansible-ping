@@ -10,7 +10,7 @@ pipeline {
             steps {
             sh '''
                 ansible --version
-		ansible-playbook /var/lib/jenkins/play1.yml
+		ansible-playbook /var/lib/jenkins/play1.yml -u root
             '''
             }
         }
