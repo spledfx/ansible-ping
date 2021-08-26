@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+    - name: Upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+    - name: Unconditionally reboot the machine with all defaults
+      reboot:
