@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  vars:
+    contains_pattern: "error"
+  tasks:
+    - name: Find error
+      shell: "grep error /var/log/secure | grep 'Aug 30'"
+      register: errorlog
+    - name: print out find result
+      debug:
+        var: errorlog.stdout
+    - name : save to file 
+      local_action:
+          module: copy
+          content: "{{ errorlog.stdout }}"
+          dest: /root/logfile/errors
